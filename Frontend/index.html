@@ -1,0 +1,218 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Prediction Agriculture PFE</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+	<link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/colors/switch.css' %}">
+	<!-- Color Alternatives -->
+	<link href="{% static 'assets/css/colors/color-2.css' %}" rel="alternate stylesheet" type="text/css" title="color-2">
+	<link href="{% static 'assets/css/colors/color-3.css' %}" rel="alternate stylesheet" type="text/css" title="color-3">
+	<link href="{% static 'assets/css/colors/color-4.css' %}" rel="alternate stylesheet" type="text/css" title="color-4">
+	<link href="{% static 'assets/css/colors/color-5.css' %}" rel="alternate stylesheet" type="text/css" title="color-5">
+</head>
+
+<body>
+
+	
+	<div class="clearfix"></div>
+
+	
+	<div class="wrapper">
+		<div class="steps-area steps-area-fixed">
+			<div class="image-holder">
+				<img src="{% static 'assets/img/side-img.png' %}" alt="">
+			</div>
+			<div class="steps clearfix">
+				<ul class="tablist multisteps-form__progress">
+					<li class="multisteps-form__progress-btn js-active current">
+						<span>1</span>
+					</li>
+					<li class="multisteps-form__progress-btn">
+						<span>2</span>
+					</li>
+					<li class="multisteps-form__progress-btn last">
+						<span>3</span>
+					</li>
+					<!-- <li class="multisteps-form__progress-btn">
+						<span>4</span>
+					</li>
+					<li class="multisteps-form__progress-btn last">
+						<span>5</span>
+					</li> -->
+				</ul>
+			</div>
+		</div>
+		<form class="multisteps-form__form" id="wizard" method="GET">
+			<div class="form-area position-relative">
+				<!-- div 1 -->
+				<div class="multisteps-form__panel js-active" data-animation="slideHorz">
+					<div class="wizard-forms">
+						<div class="inner pb-100 clearfix">
+							<div class="form-content pera-content">
+								<div class="step-inner-content">
+									<span class="step-no">Step 1</span>
+									<h2>Welcome to our PFE Project \Prediction Agriculture/</h2>
+									<p>Clik NEXT to input your farm proprieties</p>
+									<div class="step-box">
+										<div class="row">
+											<div class="col-md-4">
+												<label class="step-box-content bg-white text-center relative-position active">
+													<span class="step-box-icon">
+														<img src="{% static 'assets/img/d1.png' %}" alt="">
+													</span>
+													<span class="step-box-text">
+														Crop Choice Prediction
+													</span>
+													<span>Using NPK and other Environmental Factors</span>
+													<span class="service-check-option">
+														<span><input id="condition0" type="radio" name="service_name" value="NPK Calculator" checked></span>
+													</span>
+												</label>
+											</div>
+											
+										</div>
+										<div class="row conditional" data-condition="#condition1 && service_name == 'Freelancing Services'">
+											<div class="col-md-12 form-inner-area">
+												<label for="field"><h3>Which Sector</h3></label>
+												<input type="text" name="field" class="form-control" placeholder="Write Here">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /.inner -->
+						<div class="actions">
+							<ul>
+								<li class="disable" aria-disabled="true"><span class="js-btn-next" title="NEXT">Backward <i class="fa fa-arrow-right"></i></span></li>
+								<li><span class="js-btn-next" title="NEXT">NEXT <i class="fa fa-arrow-right"></i></span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- div 2 -->
+				<div class="multisteps-form__panel" data-animation="slideHorz">
+					<div class="wizard-forms">
+						<div class="inner pb-100 clearfix">
+							<div class="form-content pera-content">
+								<div class="step-inner-content">
+									<span class="step-no bottom-line">Step 2</span>
+									<div class="step-progress float-end">
+										<span>2 of 3 completed</span>
+										<div class="step-progress-bar">
+											<div class="progress">
+												<div class="progress-bar" style="width:45%"></div>
+											</div>
+										</div>
+									</div>
+
+									<div class = 'step2forcondition0 ' data-condition="#condition0 && service_name == 'NPK Calculator'">
+										<h2>Enter NPK</h2>
+										<p>Enter the Values of Nitrogen, Phosphorus and Potassium contents in your soil.</p>
+										<div class="form-inner-area">
+											<input type="number" name="nitrogen" class="form-control required" placeholder="Nitrogen *" required>
+											<input type="number" name="phosphorus" class="form-control required" placeholder="Phosphorus *" required>
+											<input type="number" name="potassium" class="form-control required" placeholder="Potassium *" required>
+											
+										</div>
+									</div> 
+																		
+								</div>
+							</div>
+						</div>
+						<!-- /.inner -->
+						<div class="actions">
+							<ul>
+								<li><span class="js-btn-prev" title="BACK"><i class="fa fa-arrow-left"></i> BACK </span></li>
+								<li><span class="js-btn-next" title="NEXT">NEXT <i class="fa fa-arrow-right"></i></span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- div 3 -->
+				<div class="multisteps-form__panel" data-animation="slideHorz">
+					<div class="wizard-forms">
+						<div class="inner pb-100 clearfix">
+							<div class="form-content pera-content">
+								<div class="step-inner-content">
+									<span class="step-no bottom-line">Step 3</span>
+									<div class="step-progress float-end">
+										<span>3 of 3 completed</span>
+										<div class="step-progress-bar">
+											<div class="progress">
+												<div class="progress-bar" style="width:85%"></div>
+											</div>
+										</div>
+									</div>
+									<h2>More details about your Field</h2>
+									<p>To provide you with the best results for you, we need a few more details</p>
+									<div class="" data-condition="#condition0 && service_name == 'NPK Calculator'">
+										<div class="form-inner-area">
+											<input type="number"  name="temp" placeholder="Temperature (Degree Celsius) *" > 
+											<input type="number" name="humidity" placeholder="Relative Humidity Percentage *" >
+											<input type="number" min="0" max="14" name="phval" placeholder="Soil pH Value (0-14) *" >
+											<input type="number" name="rainfall" placeholder="Rainfall in MM *" > 
+										</div>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+						<!-- ./inner -->
+						<div class="actions">
+							<ul>
+								{% csrf_token %}
+								<li><span class="js-btn-prev" title="BACK"><i class="fa fa-arrow-left"></i> BACK </span></li>
+								<li><button class="submit" type = "submit" title="SUBMIT">SUBMIT <i class="fa fa-arrow-right"></i></button></li>
+								<!-- <center><input type="submit" value="Submit"></center> -->
+							</ul>
+						</div>
+					</div>
+				</div>
+				
+		</form>
+	</div>
+	<script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+	<script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+	<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'assets/js/conditionize.flexible.jquery.min.js' %}"></script>
+	<script src="{% static 'assets/js/main.js' %}"></script>
+	<script src="{% static 'assets/js/switch.js' %}"></script>
+	<script>
+		$("#files").change(function() {
+			filename = this.files[0].name
+			// console.log(filename);
+		});
+
+		function UploadFile() {
+			var reader = new FileReader();
+			var file = document.getElementById('attach').files[0];
+			reader.onload = function() {
+				document.getElementById('fileContent').value = reader.result;
+				document.getElementById('filename').value = file.name;
+				document.getElementById('wizard').submit();
+			}
+			reader.readAsDataURL(file);
+		}
+
+		$(document).ready(function() {
+			$('.conditional').conditionize();
+		});
+	</script>
+</body>
+
+</html>
+
+<!-- python3 -m pip freeze > requirements.txt -->
