@@ -1,0 +1,128 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Login</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+	<link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.ico' %}"/>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/colors/switch.css' %}">
+	<!-- Color Alternatives -->
+	<link href="{% static 'assets/css/colors/color-2.css' %}" rel="alternate stylesheet" type="text/css" title="color-2">
+	<link href="{% static 'assets/css/colors/color-3.css' %}" rel="alternate stylesheet" type="text/css" title="color-3">
+	<link href="{% static 'assets/css/colors/color-4.css' %}" rel="alternate stylesheet" type="text/css" title="color-4">
+	<link href="{% static 'assets/css/colors/color-5.css' %}" rel="alternate stylesheet" type="text/css" title="color-5">
+</head>
+<style>
+	.container0 { width: 100vw; height: 100vh; background: #fafafa; display: flex;align-items: center;justify-content: center;}
+	.valid-feedback {
+		display: flex!important;
+		margin-bottom: 10px;
+		color: red!important;
+	}
+	.text-el a { font-weight: 700; color: #4caf50; }
+	.cont2 {
+		width: 95%;
+		max-width: 600px;
+		padding: 40px 20px;
+		background: #fff;
+		border-radius: 5px;
+		box-shadow: 0 0 2px #00000030;
+	}
+	.form-control{    border: 1px solid #e6e6e6!important;margin-bottom: 15px;}
+	.text-el {
+		margin-top: 15px;
+		font-size: 18px;
+	}
+</style>
+<body>
+
+	<div class="container0">
+		<div class="cont2">
+			<div class="form-group">
+				<label for="exampleInputEmail1">User name</label>
+				<input type="text" name="username" class="form-control" placeholder="Enter user name">
+				<div class="valid-feedback" id="username-err"></div>
+			  </div>
+			<!-- <div class="form-group">
+				<label for="exampleInputEmail1">Email</label>
+				<input type="email" name="email" class="form-control"   placeholder="Enter email">
+				<div class="valid-feedback" id="email-err"></div>
+			  </div> -->
+			  <div class="form-group">
+				<label >Password</label>
+				<input type="password" name="password1" class="form-control"  placeholder="Password">
+				<div class="valid-feedback" id="password1-err"></div>
+			  </div>
+			  <div class="form-group">
+				<label >Password Confirmation</label>
+				<input type="password" name="password2" class="form-control"  placeholder="Password">
+				<div class="valid-feedback" id="password2-err"></div>
+			  </div>
+			  <div class="valid-feedback" id="non_field_errors-err"></div>
+			  <button onclick="sendData()" type="submit" class="btn btn-primary">Register</button>	
+			  <div class="text-el">
+				  You already have an account ? <a href="/Login">Login</a>
+			  </div>		
+		</div>
+	</div>
+</body>
+
+<script>
+	const chackData = (value,name,email)=>{
+		if((!email && value.value.length<3) || (email && !isEmail(value.value))){
+			document.querySelector(`#${name}-err`).innerText="Invalid value";
+			return false;
+		}
+		document.querySelector(`#${name}-err`).innerHTML = "";
+		return true;
+	}
+	const sendData = ()=>{
+		let username =  document.querySelector('[name=username]');
+		// let email =  document.querySelector('[name=email]');
+		let password1 =  document.querySelector('[name=password1]');
+		let password2 =  document.querySelector('[name=password2]');
+		if(chackData(username,'username',0) //&&chackData(email,'email',1)
+		&&chackData(password1,'password1',0)&&chackData(password2,'password2',0)&&chackData({value:"value--"},'non_field_errors',0))
+			fetch('api/auth/registration/',{
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			}, body: JSON.stringify({
+				"username": username.value,
+				// "email": email.value,
+				"password1": password1.value,
+				"password2": password2.value,
+			})})
+			.then(r=>{
+				return r.json();
+				})
+			.then(r=>{
+				if(r['key']!=null){location.replace('/Login');return;}
+				const err = Object.keys(r);
+				if(err.length>0){
+					for(let i of err) document.querySelector(`#${i}-err`).innerHTML = r[i][0];
+				}
+			})
+			.catch(e=>console.log(e));
+			}
+			const isEmail = (email) => {
+			return String(email)
+				.toLowerCase()
+				.match(
+				/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+				);
+			};
+</script>
+</html>
+
+<!-- python3 -m pip freeze > requirements.txt -->
