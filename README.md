@@ -15,4 +15,4 @@ This web application helps farmers and gardeners determine the best crop to plan
 The application uses a decision algorithm (or machine learning model) trained on agricultural datasets that link soil and climate conditions to crop success. Based on the user's input, it evaluates the conditions and suggests the best crop(s) to plant for a successful harvest.
 
 **Prerequisites**
--Python 3.3,Django framework
+-Python 3.8,Django framework
