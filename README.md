@@ -1,5 +1,5 @@
 # Crop Recommendation Website
-** Overview **
+**Overview**
 This web application helps farmers and gardeners determine the best crop to plant based on key land characteristics. Users input data such as soil type, temperature, humidity, and other environmental factors, and the system recommends the most suitable crop for optimal yield.
 
 **Features**
