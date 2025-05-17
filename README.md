@@ -5,15 +5,14 @@ This web application helps farmers and gardeners determine the best crop to plan
 **Features**
 - Input land details: soil type, temperature, moisture, pH, etc.
 
--Intelligent crop recommendation based on environmental data
+- Intelligent crop recommendation based on environmental data
 
--Easy-to-use, responsive interface
+- Easy-to-use, responsive interface
 
--Supports a variety of crops and soil conditions
+- Supports a variety of crops and soil conditions
 
 **How It Works**
 The application uses a decision algorithm (or machine learning model) trained on agricultural datasets that link soil and climate conditions to crop success. Based on the user's input, it evaluates the conditions and suggests the best crop(s) to plant for a successful harvest.
 
 **Prerequisites**
--Python 3.x (if backend uses Python)
--Django framework
+-Python 3.3,Django framework
